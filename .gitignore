@@ -1,0 +1,20 @@
+# Build directories
+build/
+*/build/
+
+# IDE and editor settings
+.vscode/
+.idea/
+
+# Claude Code settings
+.claude/
+
+# Windows artifacts
+nul
+Thumbs.db
+*.exe
+
+# Zephyr/nRF artifacts
+*.pyc
+__pycache__/
+*.log
