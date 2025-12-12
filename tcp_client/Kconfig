@@ -1,0 +1,22 @@
+#
+# Copyright (c) 2024 EMIC
+# SPDX-License-Identifier: Apache-2.0
+#
+
+menu "TCP Client Configuration"
+
+config TCP_SERVER_ADDRESS
+	string "Direccion IP del servidor TCP"
+	default "72.60.48.208"
+
+config TCP_SERVER_PORT
+	int "Puerto del servidor TCP"
+	default 5555
+
+config TCP_SEND_INTERVAL_SECONDS
+	int "Intervalo de envio en segundos"
+	default 1
+
+endmenu
+
+source "Kconfig.zephyr"
