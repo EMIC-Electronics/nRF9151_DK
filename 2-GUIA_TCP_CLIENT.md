@@ -424,6 +424,9 @@ west flash
 2. Deberias ver:
 
 ```
+*** Booting nRF Connect SDK v3.2.0-5dcc6bd39b0f ***
+*** Using Zephyr OS v4.2.99-a57ad913cf4e ***
+
 ========================================
    TCP Client - nRF9151 DK
    Servidor: 72.60.48.208:5555
@@ -431,17 +434,22 @@ west flash
 
 Inicializando modem...
 Conectando a red LTE...
-LTE conectado: Home
+RRC modo: Connected
+LTE conectado: Roaming
 Conexion LTE establecida!
 Creando socket TCP...
 Conectando a 72.60.48.208:5555...
 Conexion TCP establecida!
+TX: hola mundo
+RX: Connected to Uppercase Server. Send text and it will be returned in UPPERCASE.
 TX: hola mundo
 RX: HOLA MUNDO
 TX: hola mundo
 RX: HOLA MUNDO
 ...
 ```
+
+> **Nota**: El servidor 72.60.48.208:5555 es un "Uppercase Server" que convierte el texto recibido a mayusculas.
 
 ---
 
@@ -518,6 +526,24 @@ RX: HOLA MUNDO
 - [Zephyr BSD Sockets](https://docs.zephyrproject.org/latest/connectivity/networking/api/sockets.html)
 - [LTE Link Control](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/libraries/modem/lte_lc.html)
 - [nRF Modem Library](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/libraries/modem/nrf_modem_lib/nrf_modem_lib.html)
+
+---
+
+## Resultados de Prueba
+
+**Fecha:** 12 de Diciembre 2025
+
+| Parametro | Resultado |
+|-----------|-----------|
+| Hardware | nRF9151 DK |
+| SDK | nRF Connect SDK v3.2.0 |
+| Zephyr OS | v4.2.99 |
+| SIM | Onomondo (incluida con el kit) |
+| Conexion LTE | Roaming |
+| Servidor TCP | 72.60.48.208:5555 |
+| TX | "hola mundo" (cada 1 segundo) |
+| RX | "HOLA MUNDO" |
+| Estado | **EXITOSO** |
 
 ---
 
