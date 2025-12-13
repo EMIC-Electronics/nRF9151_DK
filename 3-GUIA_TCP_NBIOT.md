@@ -567,6 +567,52 @@ CONFIG_LTE_MODE_PREFERENCE=2
 
 ---
 
+## Resultados de Prueba
+
+**Fecha:** 12 de Diciembre 2025
+**Ubicacion:** Buenos Aires, Argentina
+
+| Parametro | Resultado |
+|-----------|-----------|
+| Hardware | nRF9151 DK |
+| SDK | nRF Connect SDK v3.2.0 |
+| Zephyr OS | v4.2.99 |
+| Servidor TCP | 72.60.48.208:5555 |
+| Estado | **PENDIENTE** |
+
+### Intentos de conexion NB-IoT
+
+| SIM | Operador | Resultado | Error |
+|-----|----------|-----------|-------|
+| Onomondo | Multi-operador | Rechazado | EMM cause 15, 19 |
+| Conexa | - | Rechazado | EMM cause 15 |
+| Personal | Telecom Argentina | Rechazado | EMM cause 15 |
+
+### Codigos de error EMM
+
+| Codigo | Significado |
+|--------|-------------|
+| EMM cause 15 | No suitable cells in tracking area |
+| EMM cause 19 | ESM failure (fallo servicio de datos) |
+
+### Conclusion preliminar
+
+En la ubicacion de prueba (Buenos Aires, Argentina) no se logro conexion NB-IoT con ninguna de las SIMs probadas. Posibles causas:
+
+1. **Cobertura NB-IoT limitada** en Argentina - Los operadores han desplegado principalmente LTE-M
+2. **SIMs no habilitadas** para NB-IoT - Requieren planes especificos para IoT
+3. **Zona sin cobertura** - NB-IoT puede estar disponible en otras areas
+
+### Proximos pasos
+
+- [ ] Probar en otra ubicacion con cobertura NB-IoT confirmada
+- [ ] Contactar operador para verificar disponibilidad NB-IoT
+- [ ] Probar con SIM IoT especifica con NB-IoT habilitado
+
+> **Nota**: El codigo compila y flashea correctamente. La prueba funcional queda pendiente para una ubicacion con cobertura NB-IoT disponible.
+
+---
+
 ## Recursos
 
 - [LTE Link Control - Nordic](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/libraries/modem/lte_lc.html)
