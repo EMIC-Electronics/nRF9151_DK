@@ -1,12 +1,26 @@
-# Guia: Cliente TCP con nRF9151 DK
+# Guia: Cliente TCP con LTE-M en nRF9151 DK
 
 ## Objetivo
 
 Crear una aplicacion que:
-1. Se conecte a la red LTE (celular)
+1. Se conecte a la red **LTE-M** (celular IoT)
 2. Establezca conexion TCP con servidor en **72.60.48.208:5555**
 3. Envie **"hola mundo"** cada segundo
 4. Reciba **"HOLA MUNDO"** como respuesta
+
+---
+
+## LTE vs LTE-M vs NB-IoT
+
+El nRF9151 **no soporta LTE tradicional** (4G de smartphones). Solo soporta tecnologias LPWAN para IoT:
+
+| Tecnologia | Descripcion | Velocidad | Consumo | Uso tipico |
+|------------|-------------|-----------|---------|------------|
+| **LTE** | 4G tradicional (smartphones) | 100+ Mbps | Alto | NO soportado |
+| **LTE-M** | LTE Cat-M1 (IoT) | ~1 Mbps | Bajo | Trackers, wearables |
+| **NB-IoT** | Narrowband IoT | ~250 kbps | Muy bajo | Sensores, medidores |
+
+Esta guia usa **LTE-M** (modo por defecto del SDK).
 
 ---
 
@@ -15,7 +29,7 @@ Crear una aplicacion que:
 - nRF9151 DK con tarjeta SIM activa (Onomondo o Wireless Logic)
 - nRF Connect SDK v3.2.0 instalado
 - VS Code con nRF Connect Extension Pack
-- Antena LTE conectada o usar la integrada
+- Antena LTE-M conectada o usar la integrada
 
 ---
 
@@ -64,7 +78,7 @@ target_sources(app PRIVATE src/main.c)
 
 ```conf
 #
-# Configuracion TCP Client para nRF9151
+# Configuracion TCP Client LTE-M para nRF9151
 #
 
 # General
@@ -82,6 +96,12 @@ CONFIG_POSIX_API=y
 
 # LTE Link Control
 CONFIG_LTE_LINK_CONTROL=y
+
+# ============================================
+# MODO DE RED: LTE-M (por defecto)
+# Si no se especifica, el SDK usa LTE-M
+# Para NB-IoT usar: CONFIG_LTE_NETWORK_MODE_NBIOT=y
+# ============================================
 
 # Modem Library
 CONFIG_NRF_MODEM_LIB=y
